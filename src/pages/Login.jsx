@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Manejo de errores
+  const navigate = useNavigate();
+  navigate("/dashboard");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +30,7 @@ function Login() {
     setPassword("");
 
     // Redireccionamiento o cualquier otra lógica después de un inicio de sesión exitoso
-    // window.location.href = '/dashboard'; // Ejemplo de redirección a una página de "Dashboard"
+    // window.location.href = '/dashboard';
     setError(""); // Limpiar el error
   };
 
