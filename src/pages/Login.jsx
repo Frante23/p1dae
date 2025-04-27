@@ -1,70 +1,42 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/login.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // Manejo de errores
   const navigate = useNavigate();
-  navigate("/dashboard");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validación básica para asegurarse de que los campos no estén vacíos
-    if (!email || !password) {
-      setError("Por favor, complete todos los campos.");
-      return;
+  const handleLogin = () => {
+    // Validaciones simples de usuario
+    if (username === "admin" && password === "admin") {
+      navigate("/dashboard");
+    } else {
+      alert("Usuario o contraseña incorrectos.");
     }
-
-    // Aquí iría la lógica para enviar la solicitud al backend para iniciar sesión
-    // Por ejemplo, haciendo una solicitud POST a tu API de inicio de sesión
-
-    // Simulación de inicio de sesión
-    console.log("Email:", email);
-    console.log("Contraseña:", password);
-
-    // Limpiar los campos después de la sumisión
-    setEmail("");
-    setPassword("");
-
-    // Redireccionamiento o cualquier otra lógica después de un inicio de sesión exitoso
-    // window.location.href = '/dashboard';
-    setError(""); // Limpiar el error
   };
 
   return (
-    <div className="container">
-      <div className="login-box">
-        <h2>Iniciar Sesión</h2>
-        {/* Mostrar mensaje de error si hay uno */}
-        {error && <p className="error-message">{error}</p>}
+    <div className="login-container">
+      <h2>Login</h2>
+      <input
+        type="text"
+        placeholder="Usuario"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>Ingresar</button>
 
-        <form onSubmit={handleSubmit}>
-          <div className="user-box">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label>Correo electrónico</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <label>Contraseña</label>
-          </div>
-          <button type="submit">Iniciar sesión</button>
-        </form>
-      </div>
+      
+      <div><p>nota: usuario: <b>admin</b> , contraseña: <b>admin</b></p></div>
     </div>
   );
+  
 }
 
 export default Login;
