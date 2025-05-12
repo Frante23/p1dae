@@ -8,6 +8,7 @@ import Contacto from "./pages/Contacto";
 import SubirFactura from "./pages/SubirFactura";
 import ListadoFacturas from "./pages/ListadoFacturas";
 import DetalleFactura from "./pages/DetalleFactura";
+import Historial from "./pages/Historial";
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/listado-facturas" element={<ListadoFacturas />} />
         <Route path="/detalle-factura/:id" element={<DetalleFactura />} />
         <Route path="/subir-factura" element={<SubirFactura />} /> {/* Nueva Ruta */}
+        <Route path="/historial" element={<Historial />} />
       </Routes>
     </Router>
 

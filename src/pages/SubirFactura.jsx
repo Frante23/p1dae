@@ -192,6 +192,14 @@ function SubirFactura() {
         </div>
         <button type="submit" style={styles.button}>Subir Factura</button>
       </form>
+      <div style={{ marginTop: "20px" }}>
+        <button
+          style={styles.button}
+          onClick={() => navigate("/historial")}
+        >
+          Ver Historial de Facturas
+        </button>
+      </div>
     </div>
   );
 }
@@ -212,6 +220,7 @@ const styles = {
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+    marginTop: "10px",
   },
 };
 
